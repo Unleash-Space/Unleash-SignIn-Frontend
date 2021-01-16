@@ -1,0 +1,32 @@
+<h1>Login</h1>
+
+<form>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>UPI/ID</mat-label>
+      <input matInput placeholder="ID/UPI" id="ID" required name="ID" />
+    </mat-form-field>
+    <mat-error *ngIf="numFailed != ''"> Please enter an ID or UPI </mat-error>
+  </div>
+  <br />
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>reason</mat-label>
+      <mat-select required id="reason" name="reason" [(value)]="selected">
+        <mat-option *ngFor="let i of reasons" value="{{ i.reason }}">{{
+          i.reason
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-error *ngIf="selectFailed != ''"> Please select a reason </mat-error>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="disabled"
+    (click)="next()"
+  >
+    Enter
+  </button>
+</form>
