@@ -4,22 +4,25 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>UPI/ID</mat-label>
-      <input matInput placeholder="ID/UPI" id="ID" required name="ID" />
+      <input matInput placeholder="ID/UPI" id="ID" required name="ID" ngModel />
+      <!-- (keyup)="next()" -->
     </mat-form-field>
-    <mat-error *ngIf="numFailed != ''"> Please enter an ID or UPI </mat-error>
+    <mat-error *ngIf="numFailed != ''"> {{ numFailed }}</mat-error>
   </div>
   <br />
   <div>
     <mat-form-field appearance="fill">
       <mat-label>reason</mat-label>
       <mat-select required id="reason" name="reason" [(value)]="selected">
+        <!-- (click)="next()" -->
         <mat-option *ngFor="let i of reasons" value="{{ i.reason }}">{{
           i.reason
         }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-error *ngIf="selectFailed != ''"> Please select a reason </mat-error>
+    <mat-error *ngIf="selectFailed != ''"> {{ selectFailed }} </mat-error>
   </div>
+  <br />
 
   <button
     mat-raised-button

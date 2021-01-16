@@ -173,7 +173,28 @@ a:hover {
   overflow: hidden;
   background-color: rgb(15, 15, 16);
 }
+.textDisplayButton {
+  width: 2%;
+  color: #fff;
+  color: #ffff;
+  background-color: #fff;
+  background-color: #ffff;
+  opacity: 0;
 
+  // background-color: red;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+
+.displayClass {
+  width: 100;
+  color: white;
+  background-color: hotpink;
+  font-size: xx-large;
+  height: 10%;
+  padding: 10%;
+}
 .terminal::before {
   content: "\2022 \2022 \2022";
   position: absolute;

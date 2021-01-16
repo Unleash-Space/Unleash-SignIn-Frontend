@@ -31,21 +31,39 @@ export class LoginComponent implements OnInit {
   constructor() {}
   selected = '';
 
+  validateID() {
+    const upiReg = /[a-zA-Z][a-zA-Z][a-zA-Z]?[a-zA-Z]?\d\d\d/;
+    const idReg = /\d\d\d\d\d\d\d/;
+    const id = <HTMLInputElement>document.getElementById('ID');
+
+    if (!id.checkValidity()) {
+      this.numFailed = 'This is Question is Required';
+      return false;
+    } else {
+      if (!isNaN(+id.value) && (id.value.length == 7 || id.value.length == 9)) {
+        console.log('valid ID');
+        this.numFailed = '';
+        return true;
+      }
+      if (upiReg.test(id.value)) {
+        console.log('valid UPI');
+        this.numFailed = '';
+        return true;
+      }
+    }
+    this.numFailed = 'IDIOT! Thats not a valid ID or UPI';
+    return false;
+  }
+
   next() {
     const id = <HTMLInputElement>document.getElementById('ID');
     const reason = <HTMLSelectElement>document.getElementById('reason');
     var fail = false;
-    if (!id.checkValidity()) {
-      this.numFailed = 'no-num';
-      fail = true;
-      return;
-    } else {
-      this.numFailed = '';
-    }
+    fail = !this.validateID();
     if (this.selected == '') {
       fail = true;
 
-      this.selectFailed = 'no-select';
+      this.selectFailed = 'Please tell us why you are coming in today';
       return;
     } else {
       this.selectFailed = '';
@@ -57,7 +75,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    // this.reason = <HTMLSelectElement>document.getElementById('reason');
-  }
+  ngOnInit(): void {}
 }

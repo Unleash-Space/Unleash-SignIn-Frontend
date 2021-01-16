@@ -17,4 +17,12 @@
 </div>
 <app-logout *ngIf="page == 'out'"></app-logout>
 
+<div *ngIf="selectedClicked" class="displayClass">{{ textDisplay }}</div>
+<button
+  mat-button
+  class="textDisplayButton"
+  (click)="selectedClicked = !selectedClicked"
+>
+  .
+</button>
 <!-- <router-outlet></router-outlet> -->

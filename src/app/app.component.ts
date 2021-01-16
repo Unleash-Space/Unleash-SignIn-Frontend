@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Unleash';
-  page = 'out';
+  page = 'in';
+  selectedClicked = false;
+  textDisplay = 'WooW';
 
   logout() {
     this.page = 'out';
