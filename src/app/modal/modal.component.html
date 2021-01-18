@@ -1,0 +1,11 @@
+<div id="modal">
+  <h1 id="modaltitle">What are you doing in the maker space?</h1>
+  <button
+    *ngFor="let e of options"
+    type="button"
+    class="btn btn-primary btn-activity"
+    [mat-dialog-close]="e"
+  >
+    {{ e }}
+  </button>
+</div>

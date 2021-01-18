@@ -8,8 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
     <!-- Custom styles CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -25,10 +29,9 @@
     </nav>
 
     <div class="alert alert-success" id="sign-in-success">
-        <strong>Success!</strong> You have signed into Unleash Space.
+      <strong>Success!</strong> You have signed into Unleash Space.
     </div>
 
- 
     <div class="container" id="enter-upi">
       <h1>Sign into Unleash Space!</h1>
       <p>Enter your University of Auckland UPI</p>
@@ -41,79 +44,149 @@
             name="search-term"
             placeholder="UPI - e.g. abcd123"
           />
-          <button type="button" class="btn btn-primary" onclick="next()">Next</button>
+          <button type="button" class="btn btn-primary" onclick="next()">
+            Next
+          </button>
         </form>
       </div>
     </div>
 
     <div class="container" id="use-case">
-        <h1>What are you here for?</h1>
-        <p>Select the button that best describes your visit</p>
-        
-        <button type="button" class="btn btn-primary btn-use-case" data-toggle="modal" data-target="#exampleModal">Maker Space</button>
-        <button type="button" class="btn btn-primary btn-use-case">Work / Study</button>
-        <button type="button" class="btn btn-primary btn-use-case">Unleash Space Tour</button>
-        <button type="button" class="btn btn-primary btn-use-case">Query / ask staff a question</button>
-        <button type="button" class="btn btn-primary btn-use-case">Socialising</button>
-        <button type="button" class="btn btn-primary btn-use-case">Meeting room booking</button>
+      <h1>What are you here for?</h1>
+      <p>Select the button that best describes your visit</p>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-use-case"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Maker Space
+      </button>
+      <button type="button" class="btn btn-primary btn-use-case">
+        Work / Study
+      </button>
+      <button type="button" class="btn btn-primary btn-use-case">
+        Unleash Space Tour
+      </button>
+      <button type="button" class="btn btn-primary btn-use-case">
+        Query / ask staff a question
+      </button>
+      <button type="button" class="btn btn-primary btn-use-case">
+        Socialising
+      </button>
+      <button type="button" class="btn btn-primary btn-use-case">
+        Meeting room booking
+      </button>
     </div>
 
-
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">What are you doing in the maker space?</h5>
-                <button type="button" class="btn btn-primary modal-close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <button type="button" class="btn btn-primary btn-activity" onclick="home()" data-dismiss="modal">Equipment training</button>
-                    <button type="button" class="btn btn-primary btn-activity" onclick="home()" data-dismiss="modal">A personal project</button>
-                    <button type="button" class="btn btn-primary btn-activity" onclick="home()" data-dismiss="modal">An upskilling project</button>
-                    <button type="button" class="btn btn-primary btn-activity" onclick="home()" data-dismiss="modal">An entrepreneurial project or prototype</button>
-                </div>
-            </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              What are you doing in the maker space?
+            </h5>
+            <button
+              type="button"
+              class="btn btn-primary modal-close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <button
+              type="button"
+              class="btn btn-primary btn-activity"
+              onclick="home()"
+              data-dismiss="modal"
+            >
+              Equipment training
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-activity"
+              onclick="home()"
+              data-dismiss="modal"
+            >
+              A personal project
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-activity"
+              onclick="home()"
+              data-dismiss="modal"
+            >
+              An upskilling project
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-activity"
+              onclick="home()"
+              data-dismiss="modal"
+            >
+              An entrepreneurial project or prototype
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Custom JavaScript -->
     <script type="text/javascript">
-        function fade(element) {
-            var op = 1;  // initial opacity
-            var timer = setInterval(function () {
-                if (op <= 0.1){
-                    clearInterval(timer);
-                    element.style.display = 'none';
-                }
-                element.style.opacity = op;
-                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-                op -= op * 0.1;
-            }, 20);
-        }
+      function fade(element) {
+        var op = 1; // initial opacity
+        var timer = setInterval(function () {
+          if (op <= 0.1) {
+            clearInterval(timer);
+            element.style.display = "none";
+          }
+          element.style.opacity = op;
+          element.style.filter = "alpha(opacity=" + op * 100 + ")";
+          op -= op * 0.1;
+        }, 20);
+      }
 
-        function next() {
-            document.getElementById("enter-upi").style.display = "none";
-            document.getElementById("use-case").style.display = "block";
-        }
+      function next() {
+        document.getElementById("enter-upi").style.display = "none";
+        document.getElementById("use-case").style.display = "block";
+      }
 
-        function home() {
-            document.getElementById("enter-upi").style.display = "block";
-            document.getElementById("use-case").style.display = "none";
-            document.getElementById("sign-in-success").style.display = "block";
-            document.getElementById("sign-in-success").style.opacity = "1";
-            setTimeout(function() {
-                fade(document.getElementById("sign-in-success"))
-            }, 1000); 
-        }
+      function home() {
+        document.getElementById("enter-upi").style.display = "block";
+        document.getElementById("use-case").style.display = "none";
+        document.getElementById("sign-in-success").style.display = "block";
+        document.getElementById("sign-in-success").style.opacity = "1";
+        setTimeout(function () {
+          fade(document.getElementById("sign-in-success"));
+        }, 1000);
+      }
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- 
-
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

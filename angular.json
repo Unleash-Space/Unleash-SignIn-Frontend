@@ -27,11 +27,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "src/angular-theme.scss",
-              "src/styles.scss",
-              "src/theme.scss"
-            ],
+            "styles": ["src/styles.scss", "src/theme.scss"],
             "scripts": []
           },
           "configurations": {

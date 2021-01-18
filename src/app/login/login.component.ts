@@ -1,40 +1,46 @@
+import { ModalComponent } from './../modal/modal.component';
 import { Component, OnInit } from '@angular/core';
-
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  reasons = [
-    {
-      id: 1,
-      reason: 'Personal Project',
-    },
-    {
-      id: 2,
-      reason: 'Shift',
-    },
-    {
-      id: 3,
-      reason: 'Socializing',
-    },
-    {
-      id: 4,
-      reason: 'Helping Someone out',
-    },
-  ];
   disabled = false;
+  stage = 1;
   selectFailed = '';
   numFailed = '';
-
-  constructor() {}
+  buttons = [
+    { text: 'Work / Study', subOptions: [] },
+    {
+      text: 'Maker Space',
+      subOptions: [
+        'Equipment training',
+        'A personal project',
+        'An upskilling project',
+        'An entrepreneurial project or prototype',
+      ],
+    },
+    { text: 'Unleash Space Tour', subOptions: [] },
+    { text: 'Query / ask staff a question', subOptions: [] },
+    { text: 'Socialising', subOptions: [] },
+    { text: 'Meeting room booking', subOptions: [] },
+  ];
   selected = '';
+  id = '';
+  constructor(public dialog: MatDialog) {}
+
+  ngOnInit(): void {}
 
   validateID() {
     const upiReg = /[a-zA-Z][a-zA-Z][a-zA-Z]?[a-zA-Z]?\d\d\d/;
     const idReg = /\d\d\d\d\d\d\d/;
-    const id = <HTMLInputElement>document.getElementById('ID');
+    var id = <HTMLInputElement>document.getElementById('ID');
 
     if (!id.checkValidity()) {
       this.numFailed = 'This is Question is Required';
@@ -56,24 +62,49 @@ export class LoginComponent implements OnInit {
   }
 
   next() {
-    const id = <HTMLInputElement>document.getElementById('ID');
+    this.id = (<HTMLInputElement>document.getElementById('ID')).value;
     const reason = <HTMLSelectElement>document.getElementById('reason');
     var fail = false;
     fail = !this.validateID();
-    if (this.selected == '') {
-      fail = true;
-
-      this.selectFailed = 'Please tell us why you are coming in today';
-      return;
-    } else {
-      this.selectFailed = '';
-    }
 
     if (!fail) {
-      console.log(this.selected, id.value);
-      var json = { reason: this.selected, id: id.value };
+      console.log(this.id);
+      var json = { reason: this.selected, id: this.id };
+      this.stage = 2;
     }
   }
 
-  ngOnInit(): void {}
+  submit(reason: string) {
+    var json = { reason: reason, id: this.id };
+    //call API here
+    this.stage = 1;
+    console.log(json);
+  }
+
+  openDialog(ref: number): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '500px',
+      height: '600px',
+      data: { question: '', answer: '' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      var json = { reason: result, id: this.id };
+      console.log(json);
+      if (result != undefined) this.stage = 1;
+    });
+  }
+
+  fade(element: any) {
+    var op = 1; // initial opacity
+    var timer = setInterval(function () {
+      if (op <= 0.1) {
+        clearInterval(timer);
+        element.style.display = 'none';
+      }
+      element.style.opacity = op;
+      element.style.filter = 'alpha(opacity=' + op * 100 + ')';
+      op -= op * 0.1;
+    }, 20);
+  }
 }

@@ -1,0 +1,12 @@
+<div id="use-case">
+  <h1>What are you here for?</h1>
+  <p>Select the button that best describes your visit</p>
+
+  <button
+    *ngFor="let i of buttons"
+    type="button"
+    class="btn btn-primary btn-use-case"
+  >
+    {{ i.text }}
+  </button>
+</div>

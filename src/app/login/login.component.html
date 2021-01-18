@@ -1,35 +1,63 @@
-<h1>Login</h1>
-
-<form>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>UPI/ID</mat-label>
-      <input matInput placeholder="ID/UPI" id="ID" required name="ID" ngModel />
-      <!-- (keyup)="next()" -->
-    </mat-form-field>
-    <mat-error *ngIf="numFailed != ''"> {{ numFailed }}</mat-error>
+<div class="alert alert-success" id="sign-in-success">
+  <strong>Success!</strong> You have signed into Unleash Space.
+</div>
+<div *ngIf="stage == 1">
+  <div id="form-head">
+    <h1 class="title">Sign into Unleash Space!</h1>
+    <p>Enter your University of Auckland UPI</p>
   </div>
-  <br />
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>reason</mat-label>
-      <mat-select required id="reason" name="reason" [(value)]="selected">
-        <!-- (click)="next()" -->
-        <mat-option *ngFor="let i of reasons" value="{{ i.reason }}">{{
-          i.reason
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-error *ngIf="selectFailed != ''"> {{ selectFailed }} </mat-error>
+  <div id="container">
+    <form action="/submit" class="form center">
+      <div>
+        <mat-form-field appearance="fill" id="id-field" class="form-control">
+          <mat-label>UPI/ID</mat-label>
+          <input
+            matInput
+            placeholder="ID/UPI"
+            id="ID"
+            required
+            name="ID"
+            ngModel
+          />
+          <!-- (keyup)="next()" -->
+        </mat-form-field>
+        <mat-error *ngIf="numFailed != ''"> {{ numFailed }}</mat-error>
+      </div>
+      <button
+        mat-raised-button
+        id="next"
+        class="btn btn-primary next"
+        [disabled]="disabled"
+        (click)="next()"
+      >
+        Next
+      </button>
+    </form>
   </div>
-  <br />
+</div>
 
-  <button
-    mat-raised-button
-    color="primary"
-    [disabled]="disabled"
-    (click)="next()"
-  >
-    Enter
-  </button>
-</form>
+<div *ngIf="stage == 2">
+  <div id="use-case">
+    <h1 class="title">What are you here for?</h1>
+    <p>Select the button that best describes your visit</p>
+
+    <div *ngFor="let b of buttons; index as i" class="btnCont">
+      <button
+        *ngIf="b.subOptions.length == 0"
+        type="button"
+        class="btn btn-primary btn-use-case"
+        (click)="submit(b.text)"
+      >
+        {{ b.text }}
+      </button>
+      <button
+        *ngIf="b.subOptions.length > 0"
+        type="button"
+        class="btn btn-primary btn-use-case"
+        (click)="openDialog(i)"
+      >
+        {{ b.text }}
+      </button>
+    </div>
+  </div>
+</div>

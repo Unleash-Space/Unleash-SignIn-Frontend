@@ -1,4 +1,61 @@
-$my-primary: #ff7f16;
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import "~@angular/material/theming";
+@include mat-core();
+
+// Typography
+$custom-typography: mat-typography-config(
+  $font-family: Arial,
+  $headline: mat-typography-level(24px, 48px, 400),
+  $body-1: mat-typography-level(16px, 24px, 400),
+);
+@include angular-material-typography($custom-typography);
+
+// Default colors
+$my-app-primary: mat-palette($mat-deep-orange, 700, 100, 800);
+$my-app-accent: mat-palette($mat-deep-orange, 700, 100, 800);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+@include angular-material-theme($my-app-theme);
+
+// Dark theme
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+// Light theme
+$light-primary: mat-palette($mat-grey, 200, 500, 300);
+$light-accent: mat-palette($mat-brown, 200);
+$light-warn: #fe4604;
+
+$light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+
+.light-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+body {
+  background: #222;
+  text-align: center;
+  font-family: "Arial";
+  color: white;
+}
+* {
+  font-family: "Arial";
+}
+
+div {
+  color: white;
+}
+
+$my-primary: #fe4604;
+$color-hover: #ff744a;
 
 .btn-primary {
   background-color: $my-primary;

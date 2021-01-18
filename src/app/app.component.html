@@ -1,20 +1,36 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img width="40" alt="Angular Logo" src="./../assets/unleash-white.png" />
-  <span>Unleash</span>
-  <div class="spacer"></div>
-  <button mat-flat-button color="basic" (click)="logout()" *ngIf="page == 'in'">
-    Log Out
-  </button>
-  <button mat-flat-button color="basic" (click)="login()" *ngIf="page == 'out'">
-    Log In
-  </button>
-  <div class="space"></div>
-</div>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"
+      ><img class="logo" src="./../assets/unleash-white.png"
+    /></a>
+
+    <button
+      mat-flat-button
+      color="basic"
+      class="toggle-btn"
+      (click)="logout()"
+      *ngIf="page == 'in'"
+    >
+      Log Out
+    </button>
+    <button
+      mat-flat-button
+      color="basic"
+      class="toggle-btn"
+      (click)="login()"
+      *ngIf="page == 'out'"
+    >
+      Log In
+    </button>
+  </div>
+</nav>
 
 <div class="content" role="main">
-  <app-login *ngIf="page == 'in'"></app-login>
+  <app-login *ngIf="page == 'in'" id="login"></app-login>
 </div>
+<app-options *ngIf="page == 'options'"></app-options>
 <app-logout *ngIf="page == 'out'"></app-logout>
 
 <div *ngIf="selectedClicked" class="displayClass">{{ textDisplay }}</div>

@@ -3,9 +3,7 @@
     <mat-card-title>{{ i.name }}</mat-card-title>
     <mat-card-subtitle>{{ i.id }}</mat-card-subtitle>
     <mat-card-actions
-      ><button mat-flat-button color="primary" (click)="logout(i.id)">
-        Log Out
-      </button>
+      ><button class="btn-primary btn" (click)="logout(i.id)">Log Out</button>
     </mat-card-actions>
   </mat-card>
 </div>

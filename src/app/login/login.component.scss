@@ -1,0 +1,86 @@
+@import "./../../theme.scss";
+.form {
+  width: 80vw;
+  margin: auto;
+}
+
+#form-cont {
+  width: 100vw;
+}
+
+#form-head {
+  width: 100%;
+  text-align: center;
+}
+
+.form-control {
+  border: none;
+  color: #222;
+  padding: 0;
+  //   background-color: #fff0;
+}
+
+#id-field {
+  padding: 0;
+  height: 5% !important;
+  overflow: hidden !important;
+}
+
+.mat-form-field-wrapper,
+ng-tns-c66-0 {
+  padding: 0;
+}
+
+input {
+  color: #222;
+}
+
+mat-label {
+  font-weight: 700;
+  font-size: larger;
+}
+
+.btn {
+  background-color: $my-primary;
+  border: none;
+  width: 100%;
+  font-size: 1.8em;
+  margin: 10px 0 30px 0;
+}
+
+.btn:active {
+  background-color: $color-hover !important;
+}
+.btn-use-case {
+  height: 15vh;
+  width: 40%;
+  margin: 20px;
+  padding: 20px;
+  white-space: normal;
+  border: none;
+  font-size: xx-large;
+}
+
+.btnCont {
+  display: contents;
+}
+#use-case {
+  margin-top: 15%;
+}
+.title {
+  font-size: 3.5em;
+}
+#form-head {
+  margin-top: 15%;
+}
+.next {
+  padding: 10px;
+  background-color: $my-primary;
+}
+
+#sign-in-success {
+  position: fixed;
+  width: 100%;
+  top: 80px;
+  display: none;
+}
