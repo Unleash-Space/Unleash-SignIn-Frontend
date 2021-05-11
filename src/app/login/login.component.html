@@ -11,15 +11,7 @@
       <div>
         <mat-form-field appearance="fill" id="id-field" class="form-control">
           <mat-label>UPI/ID</mat-label>
-          <input
-            matInput
-            placeholder="ID/UPI"
-            id="ID"
-            required
-            name="ID"
-            ngModel
-          />
-          <!-- (keyup)="next()" -->
+          <input matInput id="ID" required name="ID" ngModel />
         </mat-form-field>
         <mat-error *ngIf="numFailed != ''"> {{ numFailed }}</mat-error>
       </div>

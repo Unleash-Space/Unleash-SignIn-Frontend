@@ -1,10 +1,6 @@
 import { ModalComponent } from './../modal/modal.component';
 import { Component, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -57,7 +53,7 @@ export class LoginComponent implements OnInit {
         return true;
       }
     }
-    this.numFailed = 'IDIOT! Thats not a valid ID or UPI';
+    this.numFailed = 'Hi please check your ID or UPI';
     return false;
   }
 

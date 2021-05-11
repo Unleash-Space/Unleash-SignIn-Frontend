@@ -32,7 +32,7 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 // Light theme
 $light-primary: mat-palette($mat-grey, 200, 500, 300);
 $light-accent: mat-palette($mat-brown, 200);
-$light-warn: #fe4604;
+$light-warn: #fe4605;
 
 $light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
 
@@ -60,4 +60,17 @@ $color-hover: #ff744a;
 .btn-primary {
   background-color: $my-primary;
   color: white;
+}
+
+mat-form-field {
+  background: none;
+  color: white;
+}
+
+mat-form-field * {
+  color: white;
+}
+
+:ng-deep.mat-form-field-underline::before {
+  background-color: white;
 }
