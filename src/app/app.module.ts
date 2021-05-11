@@ -1,3 +1,4 @@
+import { ApiService } from './api-service/api.service';
 import { DemoMaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +28,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
     FormsModule,
     DemoMaterialModule,
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
