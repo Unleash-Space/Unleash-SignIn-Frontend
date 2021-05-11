@@ -33,22 +33,22 @@
     <h1 class="title">What are you here for?</h1>
     <p>Select the button that best describes your visit</p>
 
-    <div *ngFor="let b of buttons; index as i" class="btnCont">
+    <div *ngFor="let button of buttons; index as i" class="btnCont">
       <button
-        *ngIf="b.subOptions.length == 0"
+        *ngIf="button.subReason?.length == 0"
         type="button"
         class="btn btn-primary btn-use-case"
-        (click)="submit(b.text)"
+        (click)="submit(button.option)"
       >
-        {{ b.text }}
+        {{ button.option }}
       </button>
       <button
-        *ngIf="b.subOptions.length > 0"
+        *ngIf="button.subReason?.length > 0"
         type="button"
         class="btn btn-primary btn-use-case"
         (click)="openDialog(i)"
       >
-        {{ b.text }}
+        {{ button.subReason }}
       </button>
     </div>
   </div>

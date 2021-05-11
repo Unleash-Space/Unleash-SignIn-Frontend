@@ -6,7 +6,8 @@
     *ngFor="let i of buttons"
     type="button"
     class="btn btn-primary btn-use-case"
+    (click)="select(i.optionIndex)"
   >
-    {{ i.text }}
+    {{ i.option }}
   </button>
 </div>

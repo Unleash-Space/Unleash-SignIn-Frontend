@@ -1,6 +1,13 @@
 import { ModalComponent } from './../modal/modal.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from '../api-service/api.service';
+
+class reason {
+  public option: string;
+  public optionIndex: number;
+  public subReason?: reason[];
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,27 +18,30 @@ export class LoginComponent implements OnInit {
   stage = 1;
   selectFailed = '';
   numFailed = '';
-  buttons = [
-    { text: 'Work / Study', subOptions: [] },
+  buttons: reason[] = [
+    { option: 'Work / Study', optionIndex: 0 },
     {
-      text: 'Maker Space',
-      subOptions: [
-        'Equipment training',
-        'A personal project',
-        'An upskilling project',
-        'An entrepreneurial project or prototype',
+      option: 'Maker Space',
+      optionIndex: 1,
+      subReason: [
+        { option: 'Equipment training', optionIndex: 6 },
+        { option: 'A personal project', optionIndex: 7 },
+        { option: 'An upskilling project', optionIndex: 8 },
+        { option: 'An entrepreneurial project or prototype', optionIndex: 9 },
       ],
     },
-    { text: 'Unleash Space Tour', subOptions: [] },
-    { text: 'Query / ask staff a question', subOptions: [] },
-    { text: 'Socialising', subOptions: [] },
-    { text: 'Meeting room booking', subOptions: [] },
+    { option: 'Unleash Space Tour', optionIndex: 2 },
+    { option: 'Query / ask staff a question', optionIndex: 3 },
+    { option: 'Socialising', optionIndex: 4 },
+    { option: 'Meeting room booking', optionIndex: 5 },
   ];
   selected = '';
   id = '';
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public api: ApiService) {}
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    this.buttons = await this.api.loginOptions();
+  }
 
   validateID() {
     const upiReg = /[a-zA-Z][a-zA-Z][a-zA-Z]?[a-zA-Z]?\d\d\d/;
@@ -102,5 +112,16 @@ export class LoginComponent implements OnInit {
       element.style.filter = 'alpha(opacity=' + op * 100 + ')';
       op -= op * 0.1;
     }, 20);
+  }
+  // DO THIS
+  select(index: number) {
+    var option = this.buttons.find((button) => {
+      button.optionIndex = index;
+    });
+
+    if (option?.subReason) {
+      console.log('BRING UP MODAL');
+    } else {
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { ApiService } from './../api-service/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -20,7 +21,7 @@ export class LogoutComponent implements OnInit {
     { name: 'Hayden Moore', id: 'htmoor' },
   ];
 
-  constructor() {}
+  constructor(public api: ApiService) {}
 
   logout(id: any) {
     console.log(id);
