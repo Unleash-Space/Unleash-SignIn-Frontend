@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api-service/api.service';
 import { DemoMaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
@@ -27,8 +28,9 @@ import { OverlayContainer } from '@angular/cdk/overlay';
     BrowserAnimationsModule,
     FormsModule,
     DemoMaterialModule,
+    HttpClientModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {

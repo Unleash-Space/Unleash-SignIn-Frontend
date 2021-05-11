@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
 class reason {
   public option: string;
   public optionIndex: number;
@@ -18,6 +15,9 @@ class user {
 
   constructor() {}
 }
+@Injectable({
+  providedIn: 'root',
+})
 export class ApiService {
   BASE_URL: string = '';
   headers: string;
