@@ -24,8 +24,12 @@ export class LogoutComponent implements OnInit {
   constructor(public api: ApiService) {}
 
   logout(id: any) {
-    console.log(id);
+    console.log('LOGGED OUT:', id);
+
+    this.api.logOut(id);
   }
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    // this.cards = await this.api.currentUsers();
+  }
 }

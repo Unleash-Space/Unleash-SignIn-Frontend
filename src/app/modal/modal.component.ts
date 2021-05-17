@@ -21,7 +21,7 @@ export class ModalComponent implements OnInit {
   options: reason[] = [];
 
   ngOnInit(): void {
-    console.log(this.data);
+    console.log('OPEN MODAL', this.data);
   }
 
   constructor(
