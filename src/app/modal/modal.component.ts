@@ -6,26 +6,30 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 
+class reason {
+  public option: string;
+  public index: number;
+  public subReason?: reason[];
+}
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  options = [
-    'Equipment training',
-    'A personal project',
-    'An upskilling project',
-    'An entrepreneurial project or prototype',
-  ];
+  options: reason[] = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.data);
+  }
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public api: ApiService
   ) {}
+
   onNoClick(): void {
     this.dialogRef.close();
   }

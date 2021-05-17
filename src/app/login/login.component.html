@@ -35,7 +35,7 @@
 
     <div *ngFor="let button of buttons; index as i" class="btnCont">
       <button
-        *ngIf="button.subReason?.length == 0"
+        *ngIf="!button.subReason"
         type="button"
         class="btn btn-primary btn-use-case"
         (click)="submit(button.option)"
@@ -43,12 +43,12 @@
         {{ button.option }}
       </button>
       <button
-        *ngIf="button.subReason?.length > 0"
+        *ngIf="button.subReason"
         type="button"
         class="btn btn-primary btn-use-case"
-        (click)="openDialog(i)"
+        (click)="openDialog(button)"
       >
-        {{ button.subReason }}
+        {{ button.option }}
       </button>
     </div>
   </div>
