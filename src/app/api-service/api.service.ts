@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 class reason {
   public option: string;
-  public optionIndex: number;
+  public index: number;
   public subReason?: reason[];
 
   constructor() {}

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 class reason {
   public option: string;
-  public optionIndex: number;
+  public index: number;
   public subReason?: reason[];
 }
 @Component({
@@ -13,12 +13,12 @@ class reason {
 })
 export class OptionsComponent implements OnInit {
   buttons: reason[] = [
-    { option: 'Work / Study', optionIndex: 0 },
-    { option: 'Maker Space', optionIndex: 1, subReason: [] },
-    { option: 'Unleash Space Tour', optionIndex: 2 },
-    { option: 'Query / ask staff a question', optionIndex: 3 },
-    { option: 'Socialising', optionIndex: 4 },
-    { option: 'Meeting room booking', optionIndex: 5 },
+    { option: 'Work / Study', index: 0 },
+    { option: 'Maker Space', index: 1, subReason: [] },
+    { option: 'Unleash Space Tour', index: 2 },
+    { option: 'Query / ask staff a question', index: 3 },
+    { option: 'Socialising', index: 4 },
+    { option: 'Meeting room booking', index: 5 },
   ];
 
   constructor(public api: ApiService) {}
@@ -30,7 +30,7 @@ export class OptionsComponent implements OnInit {
   // DO THIS
   select(index: number) {
     var option = this.buttons.find((button) => {
-      button.optionIndex = index;
+      button.index = index;
     });
 
     if (option?.subReason) {

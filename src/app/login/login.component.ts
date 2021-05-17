@@ -5,7 +5,7 @@ import { ApiService } from '../api-service/api.service';
 
 class reason {
   public option: string;
-  public optionIndex: number;
+  public index: number;
   public subReason?: reason[];
 }
 @Component({
@@ -15,32 +15,32 @@ class reason {
 })
 export class LoginComponent implements OnInit {
   disabled = false;
-  stage = 1;
+  stage = 2;
   selectFailed = '';
   numFailed = '';
   buttons: reason[] = [
-    { option: 'Work / Study', optionIndex: 0 },
+    { option: 'Work / Study', index: 0 },
     {
       option: 'Maker Space',
-      optionIndex: 1,
+      index: 1,
       subReason: [
-        { option: 'Equipment training', optionIndex: 6 },
-        { option: 'A personal project', optionIndex: 7 },
-        { option: 'An upskilling project', optionIndex: 8 },
-        { option: 'An entrepreneurial project or prototype', optionIndex: 9 },
+        { option: 'Equipment training', index: 6 },
+        { option: 'A personal project', index: 7 },
+        { option: 'An upskilling project', index: 8 },
+        { option: 'An entrepreneurial project or prototype', index: 9 },
       ],
     },
-    { option: 'Unleash Space Tour', optionIndex: 2 },
-    { option: 'Query / ask staff a question', optionIndex: 3 },
-    { option: 'Socialising', optionIndex: 4 },
-    { option: 'Meeting room booking', optionIndex: 5 },
+    { option: 'Unleash Space Tour', index: 2 },
+    { option: 'Query / ask staff a question', index: 3 },
+    { option: 'Socialising', index: 4 },
+    { option: 'Meeting room booking', index: 5 },
   ];
   selected = '';
   id = '';
   constructor(public dialog: MatDialog, public api: ApiService) {}
 
   async ngOnInit() {
-    this.buttons = await this.api.loginOptions();
+    // this.buttons = await this.api.loginOptions();
   }
 
   validateID() {
@@ -87,11 +87,11 @@ export class LoginComponent implements OnInit {
     console.log(json);
   }
 
-  openDialog(ref: number): void {
+  openDialog(option: reason): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '500px',
       height: '600px',
-      data: { question: '', answer: '' },
+      data: option.subReason,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -116,7 +116,7 @@ export class LoginComponent implements OnInit {
   // DO THIS
   select(index: number) {
     var option = this.buttons.find((button) => {
-      button.optionIndex = index;
+      button.index = index;
     });
 
     if (option?.subReason) {
