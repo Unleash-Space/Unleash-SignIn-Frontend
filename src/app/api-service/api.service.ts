@@ -24,6 +24,7 @@ export class ApiService {
 
   constructor(public http: HttpClient) {}
 
+  //get login options for reasons to log in
   async loginOptions(): Promise<reason[]> {
     try {
       var res: any = await this.http
@@ -35,6 +36,7 @@ export class ApiService {
     }
   }
 
+  //get a list of the currently logged in users
   async currentUsers(): Promise<user[]> {
     try {
       var res: any = await this.http.get(`${this.BASE_URL}/users`).toPromise();
@@ -44,10 +46,11 @@ export class ApiService {
     }
   }
 
-  async logIn(upi: string, reason: reason) {
+  //post log in a new user
+  async logIn(json: any) {
     try {
       var res = await this.http
-        .post(`${this.BASE_URL}/logIn`, { upi: upi, reasonIndex: reason })
+        .post(`${this.BASE_URL}/logIn`, json)
         .toPromise();
       return true;
     } catch (err) {
@@ -55,6 +58,7 @@ export class ApiService {
     }
   }
 
+  //post log out a current user
   async logOut(upi: string): Promise<boolean> {
     //{ headers: this.headers, withCredentials: withCredentials }
     try {
